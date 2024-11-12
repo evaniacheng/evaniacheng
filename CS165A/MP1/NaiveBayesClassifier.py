@@ -85,31 +85,16 @@ def load_data(train_data_path, validate_data_path):
     #seperate features and labels
     X_train = train_data.drop(columns=["label"])
     y_train = train_data["label"]
-    X_test =  validate_data.drop(columns=["label"])
-    y_test = validate_data["label"]
+ 
+    X_test = validate_data
 
-    #explicitly convert categorical clumns to 'category' type if needed
-    for col in X_train.select_dtypes(include=['object']).columns:
-        X_train[col] = X_train[col].astype('category')
-        X_test[col] = X_test[col].astype('category')
-
-    # Fill missing values for numerical columns with column mean
-    for col in X_train.select_dtypes(include=['float64', 'int64']).columns:
-        X_train[col].fillna(X_train[col].mean(), inplace=True)
-        X_test[col].fillna(X_test[col].mean(), inplace=True)
-
-    # Fill missing values for categorical columns with column mode
-    for col in X_train.select_dtypes(include=['category']).columns:
-        X_train[col].fillna(X_train[col].mode()[0], inplace=True)
-        X_test[col].fillna(X_test[col].mode()[0], inplace=True)
-
-    return X_train, y_train, X_test, y_test
+    return X_train, y_train, X_test
 
 if __name__ == "__main__":
     train_data_path = sys.argv[1]
     validate_data_path = sys.argv[2]
 
-    X_train, y_train, X_test, y_test = load_data(train_data_path, validate_data_path)
+    X_train, y_train, X_test= load_data(train_data_path, validate_data_path)
 
     model = NaiveBayes()
     model.fit(X_train, y_train)
@@ -120,3 +105,7 @@ if __name__ == "__main__":
     #print predictions
     for prediction in y_pred:
         print(1 if prediction == 1 else 0)
+
+    if y_train is not None:
+        accuracy = model.accuracy(y_train, y_pred)  # Remove or adjust for y_test if validating locally
+        print(f"Accuracy: {accuracy:.4f}")
