@@ -26,14 +26,14 @@ class NaiveBayes:
                 self._numerical_features.append(i)
 
         #calculate mean, var, and categorical probablities
-        for c in self._classes:
+        for idx, c in enumerate(self._classes):
             X_c = X[y==c]
-            self._priors[c] = X_c.shape[0] / float(n)
+            self._priors[idx] = X_c.shape[0] / float(n)
 
             #handle numerical features: compute mean and variance
             for i in self._numerical_features:
-                self._mean[c,i] = X_c.iloc[:,i].mean()
-                self._var[c,i] = X_c.iloc[:,i].var()
+                self._mean[idx,i] = X_c.iloc[:,i].mean()
+                self._var[idx,i] = X_c.iloc[:,i].var() + 1e-6
 
             #compute categorical probabilities
             self._cat_probs[c] = {}
@@ -52,19 +52,19 @@ class NaiveBayes:
     def _predict(self, x):
         posteriors = []
 
-        for c in self._classes:
-            prior = np.log(self._priors[c])
+        for idx, c in enumerate(self._classes):
+            prior = np.log(self._priors[idx])
             class_conditional = 0
 
             #gaussian likelihood for numerical features
             for i in self._numerical_features:
-                mean = self._mean[c,i]
-                var = self._var[c,i]
-                class_conditional += np.log(self._pdf(mean, var, x[i]))
+                mean = self._mean[idx,i]
+                var = self._var[idx,i]
+                class_conditional += np.log(self._pdf(mean, var, x.iloc[i]))
             
             #likelihood for categorical features
             for i in self._categorical_features:
-                category_prob = self._cat_probs[c][i].get(x[i], 1e-6) #using smalll value for unseen categories
+                category_prob = self._cat_probs[c][i].get(x.iloc[i], 1e-6) #using smalll value for unseen categories
                 class_conditional += np.log(category_prob)
 
             posterior = prior + class_conditional
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     train_data_path = sys.argv[1]
     validate_data_path = sys.argv[2]
 
-    X_train, y_train, X_test= load_data(train_data_path, validate_data_path)
+    X_train, y_train, X_test = load_data(train_data_path, validate_data_path)
 
     model = NaiveBayes()
     model.fit(X_train, y_train)
@@ -105,7 +105,3 @@ if __name__ == "__main__":
     #print predictions
     for prediction in y_pred:
         print(1 if prediction == 1 else 0)
-
-    if y_train is not None:
-        accuracy = model.accuracy(y_train, y_pred)  # Remove or adjust for y_test if validating locally
-        print(f"Accuracy: {accuracy:.4f}")
