@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @evaniacheng
 - 👀 I’m interested in coding, volleyball, and occasionally, binge-watching shows
-- 🌱 I’m currently a junior learning CS at UC Santa Barbara
+- 🌱 I’m currently a senior learning CS at UC Santa Barbara
 - 📫 How to reach me: evania@ucsb.edu
 
 <!---
