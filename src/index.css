@@ -8,6 +8,12 @@
   --animate-marquee-slow: marquee 30s linear infinite;
 }
 
+@media (min-width: 1024px) {
+  html {
+    font-size: 80%;
+  }
+}
+
 body {
   background-color: #FAF9F6; /* Warm off-white / cream */
   color: #4A4543; /* Soft dark brown/gray */

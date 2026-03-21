@@ -57,12 +57,12 @@ export default function App() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 300, damping: 30, delay: 0.5 }}
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-white/80 backdrop-blur-xl border border-pink-100/50 shadow-sm shadow-pink-100/20 rounded-full px-6 md:px-8 py-3.5 md:py-4 flex items-center gap-6 md:gap-10 w-[94%] md:w-auto justify-center"
+        className="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-white/80 backdrop-blur-xl border border-pink-100/50 shadow-sm shadow-pink-100/20 rounded-full px-6 md:px-7 lg:px-8 py-3 md:py-3.5 lg:py-4 flex items-center gap-5 md:gap-7 lg:gap-10 w-[94%] md:w-auto justify-center"
       >
-        <a href="#home" className="text-base md:text-lg font-medium text-stone-500 hover:text-pink-500 transition-colors">Home</a>
-        <a href="#projects" className="text-base md:text-lg font-medium text-stone-500 hover:text-blue-500 transition-colors">Projects</a>
-        <a href="#experience" className="text-base md:text-lg font-medium text-stone-500 hover:text-emerald-500 transition-colors">Experience</a>
-        <a href="#resume" className="text-base md:text-lg font-medium text-stone-500 hover:text-orange-500 transition-colors">Resume</a>
+        <a href="#home" className="text-base md:text-[15px] lg:text-lg font-medium text-stone-500 hover:text-pink-500 transition-colors">Home</a>
+        <a href="#projects" className="text-base md:text-[15px] lg:text-lg font-medium text-stone-500 hover:text-blue-500 transition-colors">Projects</a>
+        <a href="#experience" className="text-base md:text-[15px] lg:text-lg font-medium text-stone-500 hover:text-emerald-500 transition-colors">Experience</a>
+        <a href="#resume" className="text-base md:text-[15px] lg:text-lg font-medium text-stone-500 hover:text-orange-500 transition-colors">Resume</a>
       </motion.nav>
 
       <main className="max-w-screen-2xl mx-auto px-4 md:px-10 pt-28 space-y-20" id="home">
@@ -290,10 +290,10 @@ export default function App() {
         </section>
 
         {/* Experience Timeline Section */}
-        <section id="experience" className="scroll-mt-32 max-w-5xl xl:max-w-6xl mx-auto">
-          <h2 className="font-serif text-4xl md:text-5xl xl:text-6xl text-stone-800 mb-12 md:mb-14 text-center">Experience & Education</h2>
+        <section id="experience" className="scroll-mt-32 max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto">
+          <h2 className="font-serif text-4xl md:text-[2.6rem] lg:text-5xl xl:text-6xl text-stone-800 mb-12 md:mb-12 lg:mb-14 text-center">Experience & Education</h2>
           
-          <div className="relative border-l-2 border-stone-200 ml-3 md:ml-8 xl:ml-10 pl-8 md:pl-14 xl:pl-16 space-y-12 md:space-y-14">
+          <div className="relative border-l-2 border-stone-200 ml-3 md:ml-7 lg:ml-8 xl:ml-10 pl-8 md:pl-12 lg:pl-14 xl:pl-16 space-y-12 md:space-y-12 lg:space-y-14">
             {experience.map((item, index) => (
               <motion.div 
                 key={item.id}
@@ -304,16 +304,16 @@ export default function App() {
                 className="relative"
               >
                 {/* Timeline dot */}
-                <div className={`absolute -left-[41px] md:-left-[68px] xl:-left-[76px] top-1.5 w-4 md:w-5 h-4 md:h-5 rounded-full shadow-sm ${item.role === 'B.S. Computer Science' ? 'bg-pink-500 border-4 border-pink-200' : 'bg-[#FAF9F6] border-4 border-stone-300'}`}></div>
+                <div className={`absolute -left-[41px] md:-left-[57px] lg:-left-[68px] xl:-left-[76px] top-1.5 w-4 h-4 lg:w-5 lg:h-5 rounded-full shadow-sm ${item.role === 'B.S. Computer Science' ? 'bg-pink-500 border-4 border-pink-200' : 'bg-[#FAF9F6] border-4 border-stone-300'}`}></div>
                 
                 <div className="mb-3 flex flex-col gap-2 md:grid md:grid-cols-[minmax(0,1fr)_auto] md:items-start md:gap-x-6 md:gap-y-1">
                   <div className="min-w-0">
-                    <h3 className="text-xl md:text-2xl xl:text-3xl font-bold text-stone-800">{item.role}</h3>
-                    <span className="text-base md:text-lg font-medium text-pink-500">{item.company}</span>
+                    <h3 className="text-xl md:text-[1.4rem] lg:text-2xl xl:text-3xl font-bold text-stone-800">{item.role}</h3>
+                    <span className="text-base md:text-[1.05rem] lg:text-lg font-medium text-pink-500">{item.company}</span>
                   </div>
                   <span className="text-sm font-mono text-stone-400 bg-stone-100 px-2.5 py-1.5 rounded-md w-fit md:self-start">{item.date}</span>
                 </div>
-                <p className="text-stone-600 text-base md:text-lg leading-relaxed md:leading-8">{item.description}</p>
+                <p className="text-stone-600 text-base md:text-[1.02rem] lg:text-lg leading-relaxed md:leading-relaxed lg:leading-8">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -332,12 +332,12 @@ export default function App() {
                 Check out my full resume for a complete history of my education, experience, and technical skills.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto relative z-10">
+            <div className="flex flex-col lg:flex-row gap-4 w-full md:w-auto relative z-10">
               <a 
                 href="/evania-cheng-resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-stone-800 rounded-full font-medium hover:bg-stone-50 hover:scale-105 shadow-sm border border-stone-200 transition-all whitespace-nowrap"
+                className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-stone-800 rounded-full font-medium hover:bg-stone-50 hover:scale-105 shadow-sm border border-stone-200 transition-all whitespace-nowrap w-full lg:w-auto"
               >
                 <Eye size={20} className="text-stone-600" />
                 Preview Resume
@@ -345,7 +345,7 @@ export default function App() {
               <a 
                 href="/evania-cheng-resume.pdf"
                 download="Evania-Cheng-Resume.pdf"
-                className="flex items-center justify-center gap-2 px-8 py-4 bg-stone-800 text-white rounded-full font-medium hover:bg-stone-700 hover:scale-105 shadow-md transition-all whitespace-nowrap"
+                className="flex items-center justify-center gap-2 px-8 py-4 bg-stone-800 text-white rounded-full font-medium hover:bg-stone-700 hover:scale-105 shadow-md transition-all whitespace-nowrap w-full lg:w-auto"
               >
                 <Download size={20} className="text-white" />
                 Download Resume
