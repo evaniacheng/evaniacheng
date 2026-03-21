@@ -220,17 +220,16 @@ export default function App() {
           </div>
 
           {/* Projects Grid */}
-          <motion.div layout className="grid md:grid-cols-2 gap-8">
-            <AnimatePresence mode="sync">
+          <motion.div className="grid md:grid-cols-2 gap-8">
+            <AnimatePresence mode="wait" initial={false}>
               {filteredProjects.map((project) => (
                 <motion.div
                   key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}
-                  className="group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-sm border border-stone-100 hover:shadow-xl hover:shadow-pink-100/50 transition-all duration-500"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="group flex flex-col bg-white rounded-[2rem] overflow-hidden shadow-sm border border-stone-100 hover:shadow-xl hover:shadow-pink-100/50 transition-shadow duration-500"
                 >
                   <div className="aspect-[4/3] overflow-hidden bg-stone-100 relative">
                     <img 
