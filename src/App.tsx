@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { Github, Linkedin, Mail, ExternalLink, Users, User, Globe, Coffee, Tv, Package, GraduationCap, Download, Eye, MapPin } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 import { projects, categories, experience } from './data';
 import type { Category } from './data';
 
@@ -409,6 +410,7 @@ export default function App() {
           </div>
         </div>
       </footer>
+      <Analytics />
     </div>
   );
 }
