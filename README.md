@@ -101,7 +101,7 @@ I’m a developer focused on **frontend engineering + AI integration**, passiona
 
 * [LinkedIn](https://www.linkedin.com/in/evania-cheng)
 * [Portfolio](https://evaniacheng.vercel.app/)
-* Email: [evania@ucsb.edu](mailto:evania@ucsb.edu)
+* Email: [evania9888@gmail.com](mailto:evania9888@gmail.com)
 
 ---
 
