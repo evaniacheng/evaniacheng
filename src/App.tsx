@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, type Variants } from "motion/react";
 import { Github, Linkedin, Mail, ExternalLink, Users, User, Globe, Coffee, Tv, Package, GraduationCap, Download, Eye, MapPin } from 'lucide-react';
 import { projects, categories, Category, experience } from './data';
 
@@ -36,9 +36,20 @@ export default function App() {
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
+  const itemVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+      },
+    },
   };
 
   return (
